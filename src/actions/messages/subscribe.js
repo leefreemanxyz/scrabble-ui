@@ -16,13 +16,16 @@ export default () => {
     messages.on('patched', (message) => { dispatch(updatedMessage(message)) })
     messages.on('removed', (message) => { dispatch(removedMessage(message)) })
 
-    messages.find()
-      .then((messages) => {
-        dispatch({
-          type: SUBSCRIBED_TO_MESSAGES_SERVICE,
-          payload: messages
+    api.app.authenticate()
+      .then(() => {
+        messages.find()
+          .then((messages) => {
+            dispatch({
+              type: SUBSCRIBED_TO_MESSAGES_SERVICE,
+              payload: messages.data
+            })
+          })
         })
-      })
   }
 }
 
