@@ -24,5 +24,8 @@ export default (state = [], { type, payload } = {}) => {
 
     case MESSAGE_REMOVED :
       return state.filter((message) => (message._id !== payload._id))
+
+    default :
+      return state
   }
 }
