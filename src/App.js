@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './assets/styles/theme'
 import './App.sass'
+import Loading from './containers/Loading'
+import APIError from './containers/Error'
 
 class App extends Component {
   static childContextTypes = {
@@ -16,7 +18,8 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="app">
-          <h1>Shuuuuut Uuuuup!</h1>
+          <Loading />
+          <APIError />
           { this.props.children }
         </div>
       </MuiThemeProvider>

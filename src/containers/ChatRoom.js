@@ -12,6 +12,7 @@ class ChatRoom extends PureComponent {
 
   submitMessage() {
     this.props.postMessage(this.refs.message.getValue())
+    
   }
 
   render() {
