@@ -19,7 +19,7 @@ export const API_LOADING = 'API_LOADING'
 export const API_READY = 'API_READY'
 export const API_ERROR = 'API_ERROR'
 
-const processRequest = (service, method, params, id) => {
+const processRequest = (service, method, params, id, action) => {
   switch (method) {
     case FIND :
       return service.find(params)
@@ -57,7 +57,7 @@ export default store => next => action => {
     return api.authenticate()
       .then(() => {
         console.log('processing request')
-        processRequest(apiService, method, params, id, action)
+        processRequest(apiService, method, params, action)
         .then((result) => {
           next({ type: API_READY })
           return next({

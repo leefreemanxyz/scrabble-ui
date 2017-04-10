@@ -7,7 +7,7 @@ class Loading extends PureComponent {
   render(){
     return(
       <div>
-        {this.props.loading && <LinearProgress mode="indeterminate" />}
+        {this.props.loading && <LinearProgress mode="indeterminate" style={{ position: 'absolute', top: 0, left: 0, width: '100%'}}/>}
       </div>
     )
   }

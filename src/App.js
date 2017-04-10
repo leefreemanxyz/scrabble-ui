@@ -4,6 +4,7 @@ import muiTheme from './assets/styles/theme'
 import './App.sass'
 import Loading from './containers/Loading'
 import APIError from './containers/Error'
+import Navigation from './containers/Navigation'
 
 class App extends Component {
   static childContextTypes = {
@@ -17,11 +18,13 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div className="app">
+<div className="wrap">
+        <Navigation />
           <Loading />
           <APIError />
+        <div className="app">
           { this.props.children }
-        </div>
+        </div></div>
       </MuiThemeProvider>
     )
   }

@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import signIn from '../actions/user/sign-in'
+import { USER_SIGN_UP_PATH } from '../routes'
 
 class SignIn extends PureComponent {
   constructor() {
@@ -84,6 +86,13 @@ class SignIn extends PureComponent {
         <TextField fullWidth={true} ref="password" type="password" onChange={this.validatePassword.bind(this)} hintText="Your password" errorText={this.state.passwordError} />
 
         <div style={{ margin: '24px 0 0', textAlign: 'right' }}>
+          <Link to={USER_SIGN_UP_PATH}>
+            <RaisedButton
+              label="Sign up"
+              secondary={true}
+              style={{ marginRight: '1rem'}} />
+          </Link>
+
           <RaisedButton label="Sign In" primary={true} onClick={this.submitForm.bind(this)} />
         </div>
       </Paper>

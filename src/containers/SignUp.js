@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
+
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import signUp from '../actions/user/sign-up'
+import { USER_SIGN_IN_PATH } from '../routes'
 
 class SignUp extends PureComponent {
   constructor() {
@@ -111,7 +114,8 @@ class SignUp extends PureComponent {
   render() {
     return (
       <Paper style={{ padding: 48, width: 500, margin: '50px auto' }} zDepth={1}>
-        <h1>SignUp</h1>
+        <h1>Sign Up</h1>
+        <h2>...or shut up!</h2>
 
         <TextField fullWidth={true} ref="name" onChange={this.validateName.bind(this)} hintText="Your name..." errorText={this.state.nameError} />
         <TextField fullWidth={true} ref="email" onChange={this.validateEmail.bind(this)} hintText="Your email address" errorText={this.state.emailError} />
@@ -119,8 +123,10 @@ class SignUp extends PureComponent {
         <TextField fullWidth={true} ref="passwordConfirmation" type="password" onChange={this.validatePasswordConfirmation.bind(this)} hintText="Your password, again" errorText={this.state.passwordConfirmationError} />
 
         <div style={{ margin: '24px 0 0', textAlign: 'right' }}>
-          <RaisedButton label="Sign In" secondary={true} style={{ marginRight: '1rem' }} />
-          <RaisedButton label="Sign Up" primary={true} onClick={this.submitForm.bind(this)} />
+          <Link to={USER_SIGN_IN_PATH}>
+            <RaisedButton label="Sign In" secondary={true} style={{ marginRight: '1rem' }} />
+          </Link>
+        <RaisedButton label="Sign Up" primary={true} onClick={this.submitForm.bind(this)} />
         </div>
       </Paper>
     )
