@@ -6,7 +6,7 @@ export default (messageText) => {
       [CALL_API]: {
         service: 'messages',
         method: CREATE,
-        type: 'MESSAGE_POSTED',
+        type: 'MESSAGE_CREATED',
         authenticate: true,
         params:{ text: messageText }
       }
