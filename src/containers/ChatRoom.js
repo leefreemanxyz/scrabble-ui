@@ -36,7 +36,7 @@ class ChatRoom extends PureComponent {
 
   }
   checkForEnter(event) {
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 && this.validateMessage()) {
       this.submitMessage()
     }
   }
@@ -84,7 +84,6 @@ class ChatRoom extends PureComponent {
               multiLine={true}
               errorText={this.state.messageError}
               />
-            <RaisedButton disabled={this.props.loading} label="Shut up" primary={true} onClick={this.submitMessage.bind(this)} />
           </div>
         </div>
       </div>

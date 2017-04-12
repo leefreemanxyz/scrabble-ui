@@ -50,7 +50,7 @@ export class Navigation extends PureComponent {
         iconElementLeft={<IconButton><ChatBubble /></IconButton>}
         onLeftIconButtonTouchTap={this.toggleMenu.bind(this)}
         iconElementRight={signedIn ?
-          <FlatButton label="SignOut" onClick={this.signOut.bind(this)} /> :
+          <FlatButton label="Sign Out" onClick={this.signOut.bind(this)} /> :
           <div><FlatButton label="Sign In" onClick={this.signIn} style={{"color":palette.alternateTextColor}} />
           <FlatButton label="Sign Up" onClick={this.signUp} style={{"color":palette.alternateTextColor}} /></div>
         }

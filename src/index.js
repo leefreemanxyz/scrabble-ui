@@ -11,8 +11,9 @@ import ChatRoom from './containers/ChatRoom'
 import SignUp from './containers/SignUp'
 import SignIn from './containers/SignIn'
 import Lobby from './containers/Lobby'
+import ScrabbleBoard from './containers/ScrabbleBoard'
 
-import { ROOT_PATH, USER_SIGN_UP_PATH, USER_SIGN_IN_PATH, CHAT_PATH } from './routes'
+import { ROOT_PATH, USER_SIGN_UP_PATH, USER_SIGN_IN_PATH, CHAT_PATH, SCRABBLE_PATH } from './routes'
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route path={CHAT_PATH} component={ChatRoom}/>
         <Route path={USER_SIGN_UP_PATH} component={SignUp} />
         <Route path={USER_SIGN_IN_PATH} component={SignIn} />
+        <Route path={SCRABBLE_PATH} component={ScrabbleBoard} />
       </Route>
     </Router>
   </Provider>,
