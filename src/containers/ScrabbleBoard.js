@@ -1,11 +1,11 @@
 import React, { PureComponent, PropTypes } from 'react'
 import { connect } from 'react-redux'
-//import subscribeToMoves from '../actions/moves/subscribe'
-//import postMove from '../actions/moves/post'
+import subscribeToMoves from '../actions/moves/subscribe'
+import postMove from '../actions/moves/post'
 import ScrabbleGridItem from './ScrabbleGridItem'
 import './ScrabbleBoard.sass'
 
-export default class ScrabbleBoard extends PureComponent {
+class ScrabbleBoard extends PureComponent {
   componentWillMount(){
 
   }
@@ -46,5 +46,5 @@ export default class ScrabbleBoard extends PureComponent {
   }
 }
 
-//const mapStateToProps = ({ moves }) => ({ moves })
-//export default connect(mapStateToProps, { subscribeToMoves, postMove, subscribeToUsers })(ScrabbleBoard)
+const mapStateToProps = ({ moves }) => ({ moves })
+export default connect(mapStateToProps, { subscribeToMoves, postMove })(ScrabbleBoard)

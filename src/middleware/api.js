@@ -58,7 +58,7 @@ export default store => next => action => {
     return api.authenticate()
       .then(() => {
         console.log('processing request')
-        processRequest(apiService, method, params, action)
+        processRequest(apiService, method, params, action, id)
         .then((result) => {
           next({ type: API_READY })
           return next({

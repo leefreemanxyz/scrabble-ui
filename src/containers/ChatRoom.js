@@ -43,6 +43,7 @@ class ChatRoom extends PureComponent {
   validateMessage(){
     const { message } = this.refs
     if(message.getValue().length < 1){
+      console.log(message.getValue())
       this.setState({
       messageError: 'Either write a message or shut up'
 
