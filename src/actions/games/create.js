@@ -5,7 +5,7 @@ export default () => {
     [CALL_API]: {
       service: 'games',
       method: CREATE,
-      type: 'GAME_POSTED',
+      //type: 'GAME_POSTED',
       authenticate: true,
     }
   }
