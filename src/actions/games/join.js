@@ -1,13 +1,13 @@
 import { CALL_API, UPDATE } from '../../middleware/api'
 
-export default () => {
+export default (gameId) => {
   return {
     [CALL_API]: {
       service: 'games',
       method: UPDATE,
-      type: 'GAME_UPDATED',
       authenticate: true,
-      params:{joinGame: !join}
+      params:{joinGame: true},
+      id: gameId
     }
   }
 }
