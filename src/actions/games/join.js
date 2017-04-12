@@ -7,7 +7,7 @@ export default (gameId) => {
       method: UPDATE,
       authenticate: true,
       params:{joinGame: true},
-      id: gameId
+      id: gameId,
     }
   }
 }
