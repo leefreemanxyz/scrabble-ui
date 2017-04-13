@@ -8,7 +8,7 @@ import './ScrabbleBoard.sass'
 
 class ScrabbleBoard extends PureComponent {
   componentWillMount(){
-
+    this.props.subscribeToMoves(this.props.gameId)
   }
   submitMove(){
 
@@ -34,21 +34,22 @@ class ScrabbleBoard extends PureComponent {
   ]
     return (
       <div>
-      <div className='scrabbleBoard'>
-        {moves.map((row) => {
-          console.log(row)
-          return row.map((letter, index) => {
-            console.log(letter)
-            return <ScrabbleGridItem key={index} letter={letter} />
-
-          })
-        })}
-      </div>
-      <Play />
+        <div className='scrabbleBoard'>
+          {moves.map((row) => {
+            console.log(row)
+            return row.map((letter, index) => {
+              console.log(letter)
+              return <ScrabbleGridItem key={index} letter={letter} />
+            })
+          })}
+        </div>
+        <Play />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ moves }) => ({ moves })
+const mapStateToProps = ({ moves }, { params }) => ({ moves }, {
+  gameId: params.gameId
+ })
 export default connect(mapStateToProps, { subscribeToMoves, postMove })(ScrabbleBoard)
