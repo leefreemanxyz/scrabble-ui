@@ -22,8 +22,23 @@ class ScrabbleBoard extends PureComponent {
     return (
       <div>
         <div className='scrabbleBoard'>
-          {moves.map((row) => {
-            console.log(row)
+          <div className='headerRowTile'>A</div>
+            <div className='headerRowTile'>B</div>
+              <div className='headerRowTile'>C</div>
+                <div className='headerRowTile'>D</div>
+                  <div className='headerRowTile'>E</div>
+                    <div className='headerRowTile'>F</div>
+                      <div className='headerRowTile'>G</div>
+                        <div className='headerRowTile'>H</div>
+                          <div className='headerRowTile'>I</div>
+                            <div className='headerRowTile'>J</div>
+                              <div className='headerRowTile'>K</div>
+                                <div className='headerRowTile'>L</div>
+                                  <div className='headerRowTile'>M</div>
+                                    <div className='headerRowTile'>N</div>
+                                      <div className='headerRowTile'>O</div>
+          {moves.map((row,index) => {
+            console.log(row);
             return row.map((letter, index) => {
               console.log(letter)
               return <ScrabbleGridItem key={index} letter={letter} />

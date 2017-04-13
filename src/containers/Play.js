@@ -42,13 +42,13 @@ class Play extends PureComponent {
         <Tiles />
         <TextField
           id="1"
-          hintText=""
+          hintText="Your word"
           ref=""
           value={this.state.word}
           onChange={this.updateWord.bind(this)} />
         <TextField
           id="2"
-          hintText=""
+          hintText="Grid reference"
           ref=""
           value={this.state.startCoord}
           onChange={this.updateStartCoord.bind(this)} />
