@@ -6,9 +6,9 @@ export default class ScrabbleGridItem extends PureComponent {
 
     return(
       <div>
-        <p className="scrabbleTile">{
+        <div className="scrabbleTile">{
           this.props.letter
-        }</p>
+        }</div>
       </div>
     )
   }
