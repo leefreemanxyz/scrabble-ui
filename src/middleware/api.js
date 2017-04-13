@@ -19,6 +19,7 @@ const ERROR_UNKNOWN_ACTION_TYPE = 'API_MIDDLEWARE::ERROR_UNKNOWN_ACTION_TYPE'
 export const API_LOADING = 'API_LOADING'
 export const API_READY = 'API_READY'
 export const API_ERROR = 'API_ERROR'
+export const API_RETURNED = 'API_RETURNED'
 
 const processRequest = (action, service, method, params, id) => {
   switch (method) {
@@ -62,7 +63,9 @@ export default store => next => action => {
 
   if (authenticate) {
     return api.authenticate()
+
       .then(() => processRequest(action, apiService, method, params, id)
+
         .then((result) => {
           next({ type: API_READY })
 
