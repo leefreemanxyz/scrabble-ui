@@ -18,8 +18,9 @@ class Play extends PureComponent {
     //subscribe to moves
   }
   submitMove(){
-    console.log(`${[this.state.word, this.state.startCoord]}`)
-    this.props.postMove([this.state.word, this.state.startCoord])
+    console.log(this.props.gameId)
+    console.log(`${[this.state.word, this.state.startCoord, this.props.gameId]}`)
+    this.props.postMove([this.state.word, this.state.startCoord, this.props.gameId])
   }
   updateWord(event){
     this.setState({
@@ -60,4 +61,6 @@ class Play extends PureComponent {
   }
 }
 
-export default connect(null, {subscribeToMoves, postMove})(Play)
+const mapStateToProps = ({ moves}) => ({ moves })
+
+export default connect(mapStateToProps, {subscribeToMoves, postMove})(Play)

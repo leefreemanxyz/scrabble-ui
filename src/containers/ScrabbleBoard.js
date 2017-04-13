@@ -8,7 +8,7 @@ import './ScrabbleBoard.sass'
 
 class ScrabbleBoard extends PureComponent {
   componentWillMount(){
-    this.props.subscribeToMoves(this.props.gameId)
+    this.props.subscribeToMoves(this.props.params.gameId)
   }
   submitMove(){
 
@@ -16,9 +16,9 @@ class ScrabbleBoard extends PureComponent {
 
   render(){
     const { moves } = this.props
-    console.log('logging moves')
+    console.log(this.props)
     console.log(moves)
-    
+
     return (
       <div>
         <div className='scrabbleBoard'>
@@ -30,13 +30,11 @@ class ScrabbleBoard extends PureComponent {
             })
           })}
         </div>
-        <Play />
+        <Play gameId={this.props.params.gameId} />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ moves }, { params }) => ({ moves }, {
-  gameId: params.gameId
- })
+const mapStateToProps = ({ moves}) => ({ moves })
 export default connect(mapStateToProps, { subscribeToMoves, postMove })(ScrabbleBoard)

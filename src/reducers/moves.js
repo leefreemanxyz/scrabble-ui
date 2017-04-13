@@ -11,7 +11,6 @@ export default (state = [], { type, payload } = {}) => {
       return [].concat(payload)
 
     case MOVE_CREATED :
-      const newMove = Object.assign({}, payload)
       return payload.data
 
     case MOVE_UPDATED :
