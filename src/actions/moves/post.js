@@ -6,9 +6,9 @@ export default (move) => {
       [CALL_API]: {
         service: 'moves',
         method: CREATE,
-        type: 'MOVE_CREATED',
         authenticate: true,
-        params:{ move: move }
+        params:{ word: move[0],
+                  startPosition: move[1]}
       }
     })
   }

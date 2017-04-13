@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import subscribeToMoves from '../actions/moves/subscribe'
 import postMove from '../actions/moves/post'
 import ScrabbleGridItem from './ScrabbleGridItem'
+import Play from './Play'
 import './ScrabbleBoard.sass'
 
 class ScrabbleBoard extends PureComponent {
@@ -32,6 +33,7 @@ class ScrabbleBoard extends PureComponent {
     ['_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_'],
   ]
     return (
+      <div>
       <div className='scrabbleBoard'>
         {moves.map((row) => {
           console.log(row)
@@ -41,6 +43,8 @@ class ScrabbleBoard extends PureComponent {
 
           })
         })}
+      </div>
+      <Play />
       </div>
     )
   }
