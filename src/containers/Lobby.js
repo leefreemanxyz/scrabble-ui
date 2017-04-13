@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import subscribeToGames from '../actions/games/subscribe'
 import joinGame from '../actions/games/join'
 import createGame from '../actions/games/create'
+import { history } from '../store'
+import {SCRABBLE_PATH} from '../routes'
 import './Lobby.sass'
 const length = 0
 
@@ -18,6 +20,12 @@ class Lobby extends PureComponent {
       label="Create Game"
       primary={true} />
   }
+
+  onJoinGame(gameId){
+    this.props.joinGame(gameId)
+    history.push('/games/' + gameId )
+  }
+
   render(){
     return (
       <div className="games lobby">
@@ -38,7 +46,7 @@ class Lobby extends PureComponent {
                   zDepth={1}
                   style={{ padding:'12px 24px'}}>
                   <h4>{ game.title }</h4>
-                  { game.playerIds.length < 2 && <button onClick={() => {this.props.joinGame(game._id)}}>Join</button>}
+                  { game.playerIds.length < 2 && <button onClick={() => {this.onJoinGame(game._id)}}>Join</button>}
                 </Paper>
               )
             })}

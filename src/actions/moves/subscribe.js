@@ -11,7 +11,7 @@ export const MOVE_REMOVED = 'MOVE_REMOVED'
 const api = new API()
 const moves = api.service('moves')
 
-export default () => {
+export default (currentGameId) => {
   return (dispatch) => {
     moves.on('created', (move) => { dispatch(createdMessage(move)) })
     moves.on('updated', (move) => { dispatch(updatedMessage(move)) })
@@ -24,7 +24,11 @@ export default () => {
         method: FIND,
         type: SUBSCRIBED_TO_MOVES_SERVICE,
         authenticate: true,
-
+        params: {
+          query: {
+            gameId: currentGameId
+          }
+        }
       }
     })
   }
