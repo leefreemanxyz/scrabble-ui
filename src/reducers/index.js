@@ -5,6 +5,7 @@ import loading from './loading'
 import apiError from './apiError'
 import users from './users'
 import games from './games'
+import moves from './moves'
 
 module.exports = {
   currentUser,
@@ -13,4 +14,5 @@ module.exports = {
   apiError,
   users,
   games,
+  moves
 }
