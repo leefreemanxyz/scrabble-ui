@@ -83,9 +83,9 @@ export default store => next => action => {
         }))
       .catch((error) => {
         console.error(error)
-
+        if(error.code === 401){
         history.replace(USER_SIGN_IN_PATH)
-
+        }
         return next({
           type: API_ERROR,
           payload: error
