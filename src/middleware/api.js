@@ -1,3 +1,4 @@
+// src/middleware/api.js
 import API from '../lib/api'
 import { history } from '../store'
 import { USER_SIGN_IN_PATH } from '../routes'
@@ -20,20 +21,27 @@ export const API_READY = 'API_READY'
 export const API_ERROR = 'API_ERROR'
 export const API_RETURNED = 'API_RETURNED'
 
-const processRequest = (service, method, params, id, action) => {
+const processRequest = (action, service, method, params, id) => {
   switch (method) {
     case FIND :
+      console.debug(params)
       return service.find(params)
+
     case GET :
       return service.get(id, params)
+
     case CREATE :
       return service.create(params)
+
     case UPDATE :
       return service.update(id, params)
+
     case PATCH :
       return service.patch(id, params)
+
     case DESTROY :
       return service.destroy(id, params)
+
     default :
       console.error(
         `${method} is not a recognized API method!`,
@@ -50,53 +58,54 @@ export default store => next => action => {
 
   const api = new API()
   const apiService = api.service(service)
-  console.log(apiService)
 
   next({ type: API_LOADING })
 
   if (authenticate) {
     return api.authenticate()
-      .then(() => {
-        console.log('processing request')
-        processRequest(apiService, method, params, action, id)
+
+      .then(() => processRequest(action, apiService, method, params, id)
+
         .then((result) => {
           next({ type: API_READY })
+
           return next({
             type,
-            payload: result.data,
+            payload: result.data
           })
-        })
-      })
+        }))
       .catch((error) => {
+        console.error(error)
+
         history.replace(USER_SIGN_IN_PATH)
-        console.log('does this happen?')
+
         return next({
           type: API_ERROR,
-          payload: error,
+          payload: error
         })
       })
   }
 
-   return processRequest(apiService, method, params, action)
+  return processRequest(action, apiService, method, params)
     .then((result) => {
-      console.log('THIS IS NEVER HAPPENING')
       next({ type: API_READY })
+
       return next({
         type,
-        payload: result.data,
+        payload: result.data
       })
     })
     .catch((error) => {
-      console.log('THIS IS ALWAYS HAPPENING')
       if (error.code === 401) {
-         //try again, with authentication
+        // try again, with authentication
         return next({ [CALL_API]: { ...action[CALL_API], authenticate: true }})
       }
+
       // give up
       console.error(error)
       return next({
         type: API_ERROR,
-        payload: error,
+        payload: error
       })
     })
 }
