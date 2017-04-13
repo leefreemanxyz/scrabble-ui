@@ -8,11 +8,11 @@ import {
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
     case SUBSCRIBED_TO_MOVES_SERVICE :
-      return ([].concat(payload)).reverse()
+      return [].concat(payload)
 
     case MOVE_CREATED :
       const newMove = Object.assign({}, payload)
-      return state.concat([newMove])
+      return payload.data
 
     case MOVE_UPDATED :
       return state.map((move) => {

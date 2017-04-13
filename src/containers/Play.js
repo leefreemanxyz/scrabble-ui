@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import Tiles from './Tiles'
 import postMove from '../actions/moves/post'
+import subscribeToMoves from '../actions/moves/subscribe'
 
 class Play extends PureComponent {
   constructor(){
@@ -59,4 +60,4 @@ class Play extends PureComponent {
   }
 }
 
-export default connect(null, {postMove})(Play)
+export default connect(null, {subscribeToMoves, postMove})(Play)

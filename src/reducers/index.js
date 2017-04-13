@@ -14,5 +14,5 @@ module.exports = {
   apiError,
   users,
   games,
-  moves,
+  moves
 }
