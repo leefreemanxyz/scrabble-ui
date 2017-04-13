@@ -8,7 +8,10 @@ export default (move) => {
         method: CREATE,
         authenticate: true,
         params:{ word: move[0],
-                  startPosition: move[1]}
+                  startPosition: move[1],
+                gameId: move[2],
+                query: {gameId: move[2]}
+              }
       }
     })
   }
