@@ -46,7 +46,7 @@ export class Navigation extends PureComponent {
     const {signedIn} = this.props
     return(
       <div>
-      <AppBar title="ChatRoom"
+      <AppBar title="sCRAPple"
         iconElementLeft={<IconButton><ChatBubble /></IconButton>}
         onLeftIconButtonTouchTap={this.toggleMenu.bind(this)}
         iconElementRight={signedIn ?
