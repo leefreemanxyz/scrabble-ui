@@ -48,7 +48,6 @@ class Play extends PureComponent {
     return (
       <div>
         <h4>Play</h4>
-        <Tiles />
         <TextField
           id="1"
           hintText="Your word"
