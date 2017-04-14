@@ -11,7 +11,8 @@ class Play extends PureComponent {
     super()
     this.state = {
       word: '',
-      startCoord: '',
+      startCoordA: '',
+      startCoordB: '',
     }
   }
   componentWillMount(){
@@ -19,20 +20,28 @@ class Play extends PureComponent {
   }
   submitMove(){
     console.log(this.props.gameId)
-    console.log(`${[this.state.word, this.state.startCoord, this.props.gameId]}`)
-    this.props.postMove([this.state.word, this.state.startCoord, this.props.gameId])
+    console.log([this.state.word, [this.state.startCoordA, this.state.startCoordB], this.props.gameId])
+    this.props.postMove([this.state.word, [this.state.startCoordA, this.state.startCoordB], this.props.gameId])
   }
   updateWord(event){
     this.setState({
       word: event.target.value,
     })
   }
-  updateStartCoord(event){
+  updateStartCoordA(event){
     this.setState({
-      startCoord: event.target.value,
+      startCoordA: event.target.value,
+    })
+  }
+  updateStartCoordB(event){
+    this.setState({
+      startCoordB: event.target.value,
     })
   }
   validateMove(){
+
+  }
+  previewMove(){
 
   }
   render(){
@@ -50,8 +59,14 @@ class Play extends PureComponent {
           id="2"
           hintText="Grid reference"
           ref=""
-          value={this.state.startCoord}
-          onChange={this.updateStartCoord.bind(this)} />
+          value={this.state.startCoordA}
+          onChange={this.updateStartCoordA.bind(this)} />
+          <TextField
+            id="3"
+            hintText="Grid reference"
+            ref=""
+            value={this.state.startCoordB}
+            onChange={this.updateStartCoordB.bind(this)} />
         <RaisedButton
           label="Send move"
           onClick={this.submitMove.bind(this)}
